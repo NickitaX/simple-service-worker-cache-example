@@ -1,11 +1,10 @@
-var CACHE_NAME = 'nick-cache-v1';
-var urlsToCache = [
-  '/data/toukan.jpg',
+let CACHE_NAME = 'nick-cache-v1';
+let urlsToCache = [
+  '/data/parrot.JPG',
 ];
 
 self.addEventListener('install', function(event) {
   console.log('install SW.js');
-  // Perform install steps
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(function(cache) {
@@ -20,7 +19,6 @@ self.addEventListener('fetch', function(event) {
   event.respondWith(
     caches.match(event.request)
       .then(function(response) {
-        // Cache hit - return response
         if (response) {
           return response;
         }
